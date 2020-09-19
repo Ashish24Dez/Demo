@@ -1,0 +1,369 @@
+[root@ip-172-31-35-47 ~]# client_loop: send disconnect: Connection reset by peer
+
+ashis@MSI MINGW64 /f/Ethans
+$ ssh -i RHInstance.pem ec2-user@35.154.13.47
+load pubkey "RHInstance.pem": invalid format
+This system is not registered to Red Hat Insights. See https://cloud.redhat.com/
+To register this system, run: insights-client --register
+
+Last login: Sun Aug 30 14:36:57 2020 from 106.220.73.230
+[ec2-user@ip-172-31-35-47 ~]$ sudo su -
+Last login: Sun Aug 30 14:37:04 UTC 2020 on pts/0
+[root@ip-172-31-35-47 ~]#  sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+Adding repo from: https://download.docker.com/linux/centos/docker-ce.repo
+[root@ip-172-31-35-47 ~]# sudo dnf repolist -v
+Loaded plugins: AmazonID, builddep, changelog, config-manager, copr, debug, debuginfo-install, download, generate_completion_cache, needs-restarting, playground, repoclosure, repodiff, repograph, repomanage, reposync, uploadprofile
+DNF version: 4.2.17
+cachedir: /var/cache/dnf
+User-Agent: constructed: 'libdnf (Red Hat Enterprise Linux 8.2; generic; Linux.x86_64)'
+repo: downloading from remote: docker-ce-stable
+Docker CE Stable - x86_64                                                                                                                                     200 kB/s |  25 kB     00:00
+docker-ce-stable: using metadata from Mon 22 Jun 2020 10:31:42 PM UTC.
+repo: using cache for: jenkins
+jenkins: using metadata from Mon 17 Aug 2020 12:37:47 PM UTC.
+repo: using cache for: rhui-client-config-server-8
+rhui-client-config-server-8: using metadata from Mon 17 Aug 2020 02:44:56 PM UTC.
+repo: using cache for: rhel-8-appstream-rhui-rpms
+rhel-8-appstream-rhui-rpms: using metadata from Wed 26 Aug 2020 01:55:18 PM UTC.
+repo: using cache for: rhel-8-baseos-rhui-rpms
+rhel-8-baseos-rhui-rpms: using metadata from Mon 10 Aug 2020 01:53:35 PM UTC.
+Completion plugin: Generating completion cache...
+
+Repo-id            : docker-ce-stable
+Repo-name          : Docker CE Stable - x86_64
+Repo-revision      : 1592865102
+Repo-updated       : Mon 22 Jun 2020 10:31:42 PM UTC
+Repo-pkgs          : 79
+Repo-available-pkgs: 71
+Repo-size          : 1.9 G
+Repo-baseurl       : https://download.docker.com/linux/centos/7/x86_64/stable
+Repo-expire        : 172,800 second(s) (last: Sun 30 Aug 2020 02:41:55 PM UTC)
+Repo-filename      : /etc/yum.repos.d/docker-ce.repo
+
+Repo-id            : jenkins
+Repo-name          : Jenkins-stable
+Repo-revision      : 1597667866
+Repo-updated       : Mon 17 Aug 2020 12:37:47 PM UTC
+Repo-pkgs          : 109
+Repo-available-pkgs: 109
+Repo-size          : 6.5 G
+Repo-baseurl       : http://pkg.jenkins.io/redhat-stable
+Repo-expire        : 172,800 second(s) (last: Sun 30 Aug 2020 02:36:50 PM UTC)
+Repo-filename      : /etc/yum.repos.d/jenkins.repo
+
+Repo-id            : rhel-8-appstream-rhui-rpms
+Repo-name          : Red Hat Enterprise Linux 8 for x86_64 - AppStream from RHUI (RPMs)
+Repo-revision      : 1598450072
+Repo-updated       : Wed 26 Aug 2020 01:55:18 PM UTC
+Repo-pkgs          : 12,012
+Repo-available-pkgs: 10,970
+Repo-size          : 25 G
+Repo-mirrors       : https://rhui3.ap-south-1.aws.ce.redhat.com/pulp/mirror/content/dist/rhel8/rhui/8/x86_64/appstream/os
+Repo-baseurl       : https://rhui3.ap-south-1.aws.ce.redhat.com/pulp/repos/content/dist/rhel8/rhui/8/x86_64/appstream/os (0 more)
+Repo-expire        : 172,800 second(s) (last: Sun 30 Aug 2020 02:36:50 PM UTC)
+Repo-filename      : /etc/yum.repos.d/redhat-rhui.repo
+
+Repo-id            : rhel-8-baseos-rhui-rpms
+Repo-name          : Red Hat Enterprise Linux 8 for x86_64 - BaseOS from RHUI (RPMs)
+Repo-revision      : 1597067548
+Repo-updated       : Mon 10 Aug 2020 01:53:35 PM UTC
+Repo-pkgs          : 4,982
+Repo-available-pkgs: 4,979
+Repo-size          : 6.4 G
+Repo-mirrors       : https://rhui3.ap-south-1.aws.ce.redhat.com/pulp/mirror/content/dist/rhel8/rhui/8/x86_64/baseos/os
+Repo-baseurl       : https://rhui3.ap-south-1.aws.ce.redhat.com/pulp/repos/content/dist/rhel8/rhui/8/x86_64/baseos/os (0 more)
+Repo-expire        : 172,800 second(s) (last: Sun 30 Aug 2020 02:36:51 PM UTC)
+Repo-filename      : /etc/yum.repos.d/redhat-rhui.repo
+
+Repo-id            : rhui-client-config-server-8
+Repo-name          : Red Hat Update Infrastructure 3 Client Configuration Server 8
+Repo-revision      : 1597675496
+Repo-updated       : Mon 17 Aug 2020 02:44:56 PM UTC
+Repo-pkgs          : 11
+Repo-available-pkgs: 11
+Repo-size          : 376 k
+Repo-mirrors       : https://rhui3.ap-south-1.aws.ce.redhat.com/pulp/mirror/protected/rhui-client-config/rhel/server/8/x86_64/os
+Repo-baseurl       : https://rhui3.ap-south-1.aws.ce.redhat.com/pulp/repos/protected/rhui-client-config/rhel/server/8/x86_64/os (0 more)
+Repo-expire        : 172,800 second(s) (last: Sun 30 Aug 2020 02:36:50 PM UTC)
+Repo-filename      : /etc/yum.repos.d/redhat-rhui-client-config.repo
+Total packages: 17,193
+[root@ip-172-31-35-47 ~]#  dnf list docker-ce --showduplicates | sort -r
+Last metadata expiration check: 0:00:47 ago on Sun 30 Aug 2020 02:41:55 PM UTC.
+docker-ce.x86_64            3:19.03.9-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.8-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.7-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.6-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.5-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.4-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.3-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.2-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.1-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.12-3.el7                    docker-ce-stable
+docker-ce.x86_64            3:19.03.11-3.el7                    docker-ce-stable
+docker-ce.x86_64            3:19.03.10-3.el7                    docker-ce-stable
+docker-ce.x86_64            3:19.03.0-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.9-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.8-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.7-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.6-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.5-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.4-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.3-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.2-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.1-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.0-3.el7                     docker-ce-stable
+docker-ce.x86_64            18.06.3.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.06.2.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.06.1.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.06.0.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.03.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            18.03.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.12.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.12.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.09.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.09.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.06.2.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.06.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.06.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.03.3.ce-1.el7                    docker-ce-stable
+docker-ce.x86_64            17.03.2.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.03.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.03.0.ce-1.el7.centos             docker-ce-stable
+Available Packages
+[root@ip-172-31-35-47 ~]#  dnf list docker-ce --showduplicates | sort -r
+Last metadata expiration check: 0:01:42 ago on Sun 30 Aug 2020 02:41:55 PM UTC.
+docker-ce.x86_64            3:19.03.9-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.8-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.7-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.6-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.5-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.4-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.3-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.2-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.1-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.12-3.el7                    docker-ce-stable
+docker-ce.x86_64            3:19.03.11-3.el7                    docker-ce-stable
+docker-ce.x86_64            3:19.03.10-3.el7                    docker-ce-stable
+docker-ce.x86_64            3:19.03.0-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.9-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.8-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.7-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.6-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.5-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.4-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.3-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.2-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.1-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.0-3.el7                     docker-ce-stable
+docker-ce.x86_64            18.06.3.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.06.2.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.06.1.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.06.0.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.03.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            18.03.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.12.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.12.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.09.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.09.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.06.2.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.06.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.06.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.03.3.ce-1.el7                    docker-ce-stable
+docker-ce.x86_64            17.03.2.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.03.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.03.0.ce-1.el7.centos             docker-ce-stable
+Available Packages
+[root@ip-172-31-35-47 ~]# sudo dnf install --nobest docker-ce
+Last metadata expiration check: 0:02:06 ago on Sun 30 Aug 2020 02:41:55 PM UTC.
+Dependencies resolved.
+
+ Problem: package docker-ce-3:19.03.12-3.el7.x86_64 requires containerd.io >= 1.2.2-3, but none of the providers can be installed
+  - cannot install the best candidate for the job
+  - package containerd.io-1.2.10-3.2.el7.x86_64 is filtered out by modular filtering
+  - package containerd.io-1.2.13-3.1.el7.x86_64 is filtered out by modular filtering
+  - package containerd.io-1.2.13-3.2.el7.x86_64 is filtered out by modular filtering
+  - package containerd.io-1.2.2-3.3.el7.x86_64 is filtered out by modular filtering
+  - package containerd.io-1.2.2-3.el7.x86_64 is filtered out by modular filtering
+  - package containerd.io-1.2.4-3.1.el7.x86_64 is filtered out by modular filtering
+  - package containerd.io-1.2.5-3.1.el7.x86_64 is filtered out by modular filtering
+  - package containerd.io-1.2.6-3.3.el7.x86_64 is filtered out by modular filtering
+==============================================================================================================================================================================================
+ Package                                         Architecture              Version                                                        Repository                                     Size
+==============================================================================================================================================================================================
+Installing:
+ docker-ce                                       x86_64                    3:18.09.1-3.el7                                                docker-ce-stable                               19 M
+Installing dependencies:
+ container-selinux                               noarch                    2:2.135.0-1.module+el8.2.1+6849+893e4f4a                       rhel-8-appstream-rhui-rpms                     49 k
+ containerd.io                                   x86_64                    1.2.0-3.el7                                                    docker-ce-stable                               22 M
+ docker-ce-cli                                   x86_64                    1:19.03.12-3.el7                                               docker-ce-stable                               38 M
+ iptables                                        x86_64                    1.8.4-10.el8                                                   rhel-8-baseos-rhui-rpms                       581 k
+ libcgroup                                       x86_64                    0.41-19.el8                                                    rhel-8-baseos-rhui-rpms                        70 k
+ libnetfilter_conntrack                          x86_64                    1.0.6-5.el8                                                    rhel-8-baseos-rhui-rpms                        65 k
+ libnfnetlink                                    x86_64                    1.0.1-13.el8                                                   rhel-8-baseos-rhui-rpms                        33 k
+ libnftnl                                        x86_64                    1.1.5-4.el8                                                    rhel-8-baseos-rhui-rpms                        83 k
+ policycoreutils-python-utils                    noarch                    2.9-9.el8                                                      rhel-8-baseos-rhui-rpms                       251 k
+Enabling module streams:
+ container-tools                                                           rhel8
+Skipping packages with broken dependencies:
+ docker-ce                                       x86_64                    3:19.03.12-3.el7                                               docker-ce-stable                               24 M
+
+Transaction Summary
+==============================================================================================================================================================================================
+Install  10 Packages
+Skip      1 Package
+
+Total download size: 80 M
+Installed size: 333 M
+Is this ok [y/N]: Y
+Downloading Packages:
+(1/10): docker-ce-18.09.1-3.el7.x86_64.rpm                                                                                                                     26 MB/s |  19 MB     00:00
+(2/10): containerd.io-1.2.0-3.el7.x86_64.rpm                                                                                                                   25 MB/s |  22 MB     00:00
+(3/10): container-selinux-2.135.0-1.module+el8.2.1+6849+893e4f4a.noarch.rpm                                                                                   337 kB/s |  49 kB     00:00
+(4/10): libnetfilter_conntrack-1.0.6-5.el8.x86_64.rpm                                                                                                         705 kB/s |  65 kB     00:00
+(5/10): libcgroup-0.41-19.el8.x86_64.rpm                                                                                                                      769 kB/s |  70 kB     00:00
+(6/10): libnfnetlink-1.0.1-13.el8.x86_64.rpm                                                                                                                  344 kB/s |  33 kB     00:00
+(7/10): libnftnl-1.1.5-4.el8.x86_64.rpm                                                                                                                       738 kB/s |  83 kB     00:00
+(8/10): docker-ce-cli-19.03.12-3.el7.x86_64.rpm                                                                                                                30 MB/s |  38 MB     00:01
+(9/10): policycoreutils-python-utils-2.9-9.el8.noarch.rpm                                                                                                     1.2 MB/s | 251 kB     00:00
+(10/10): iptables-1.8.4-10.el8.x86_64.rpm                                                                                                                     2.5 MB/s | 581 kB     00:00
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                                          58 MB/s |  80 MB     00:01
+warning: /var/cache/dnf/docker-ce-stable-091d8a9c23201250/packages/containerd.io-1.2.0-3.el7.x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID 621e9f35: NOKEY
+Docker CE Stable - x86_64                                                                                                                                      38 kB/s | 1.6 kB     00:00
+Importing GPG key 0x621E9F35:
+ Userid     : "Docker Release (CE rpm) <docker@docker.com>"
+ Fingerprint: 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35
+ From       : https://download.docker.com/linux/centos/gpg
+Is this ok [y/N]: Y
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                                                      1/1
+  Installing       : libnfnetlink-1.0.1-13.el8.x86_64                                                                                                                                    1/10
+  Running scriptlet: libnfnetlink-1.0.1-13.el8.x86_64                                                                                                                                    1/10
+  Installing       : libnetfilter_conntrack-1.0.6-5.el8.x86_64                                                                                                                           2/10
+  Running scriptlet: libnetfilter_conntrack-1.0.6-5.el8.x86_64                                                                                                                           2/10
+  Installing       : policycoreutils-python-utils-2.9-9.el8.noarch                                                                                                                       3/10
+  Running scriptlet: container-selinux-2:2.135.0-1.module+el8.2.1+6849+893e4f4a.noarch                                                                                                   4/10
+  Installing       : container-selinux-2:2.135.0-1.module+el8.2.1+6849+893e4f4a.noarch                                                                                                   4/10
+  Running scriptlet: container-selinux-2:2.135.0-1.module+el8.2.1+6849+893e4f4a.noarch                                                                                                   4/10
+  Installing       : libnftnl-1.1.5-4.el8.x86_64                                                                                                                                         5/10
+  Running scriptlet: libnftnl-1.1.5-4.el8.x86_64                                                                                                                                         5/10
+  Running scriptlet: iptables-1.8.4-10.el8.x86_64                                                                                                                                        6/10
+  Installing       : iptables-1.8.4-10.el8.x86_64                                                                                                                                        6/10
+  Running scriptlet: iptables-1.8.4-10.el8.x86_64                                                                                                                                        6/10
+  Running scriptlet: libcgroup-0.41-19.el8.x86_64                                                                                                                                        7/10
+  Installing       : libcgroup-0.41-19.el8.x86_64                                                                                                                                        7/10
+  Running scriptlet: libcgroup-0.41-19.el8.x86_64                                                                                                                                        7/10
+  Installing       : docker-ce-cli-1:19.03.12-3.el7.x86_64                                                                                                                               8/10
+  Running scriptlet: docker-ce-cli-1:19.03.12-3.el7.x86_64                                                                                                                               8/10
+  Installing       : containerd.io-1.2.0-3.el7.x86_64                                                                                                                                    9/10
+  Running scriptlet: containerd.io-1.2.0-3.el7.x86_64                                                                                                                                    9/10
+  Running scriptlet: docker-ce-3:18.09.1-3.el7.x86_64                                                                                                                                   10/10
+  Installing       : docker-ce-3:18.09.1-3.el7.x86_64                                                                                                                                   10/10
+  Running scriptlet: docker-ce-3:18.09.1-3.el7.x86_64                                                                                                                                   10/10
+  Running scriptlet: container-selinux-2:2.135.0-1.module+el8.2.1+6849+893e4f4a.noarch                                                                                                  10/10
+  Running scriptlet: docker-ce-3:18.09.1-3.el7.x86_64                                                                                                                                   10/10
+  Verifying        : containerd.io-1.2.0-3.el7.x86_64                                                                                                                                    1/10
+  Verifying        : docker-ce-3:18.09.1-3.el7.x86_64                                                                                                                                    2/10
+  Verifying        : docker-ce-cli-1:19.03.12-3.el7.x86_64                                                                                                                               3/10
+  Verifying        : container-selinux-2:2.135.0-1.module+el8.2.1+6849+893e4f4a.noarch                                                                                                   4/10
+  Verifying        : libnetfilter_conntrack-1.0.6-5.el8.x86_64                                                                                                                           5/10
+  Verifying        : libcgroup-0.41-19.el8.x86_64                                                                                                                                        6/10
+  Verifying        : libnfnetlink-1.0.1-13.el8.x86_64                                                                                                                                    7/10
+  Verifying        : libnftnl-1.1.5-4.el8.x86_64                                                                                                                                         8/10
+  Verifying        : iptables-1.8.4-10.el8.x86_64                                                                                                                                        9/10
+  Verifying        : policycoreutils-python-utils-2.9-9.el8.noarch                                                                                                                      10/10
+
+Installed:
+  container-selinux-2:2.135.0-1.module+el8.2.1+6849+893e4f4a.noarch                    containerd.io-1.2.0-3.el7.x86_64                    docker-ce-3:18.09.1-3.el7.x86_64
+  docker-ce-cli-1:19.03.12-3.el7.x86_64                                                iptables-1.8.4-10.el8.x86_64                        libcgroup-0.41-19.el8.x86_64
+  libnetfilter_conntrack-1.0.6-5.el8.x86_64                                            libnfnetlink-1.0.1-13.el8.x86_64                    libnftnl-1.1.5-4.el8.x86_64
+  policycoreutils-python-utils-2.9-9.el8.noarch
+
+Skipped:
+  docker-ce-3:19.03.12-3.el7.x86_64
+
+Complete!
+[root@ip-172-31-35-47 ~]# --version
+-bash: --version: command not found
+[root@ip-172-31-35-47 ~]# docker --version
+Docker version 19.03.12, build 48a66213fe
+[root@ip-172-31-35-47 ~]# docker pull jenkins/jenkins:lts
+Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+[root@ip-172-31-35-47 ~]# sudo systemctl disable firewalld
+Failed to disable unit: Unit file firewalld.service does not exist.
+[root@ip-172-31-35-47 ~]# sudo systemctl enable --now docker
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /usr/lib/systemd/system/docker.service.
+[root@ip-172-31-35-47 ~]# systemctl is-active docker
+active
+[root@ip-172-31-35-47 ~]# systemctl is-enabled docker
+enabled
+[root@ip-172-31-35-47 ~]# docker pull jenkins/jenkins:lts
+lts: Pulling from jenkins/jenkins
+3192219afd04: Pull complete
+17c160265e75: Pull complete
+cc4fe40d0e61: Pull complete
+9d647f502a07: Pull complete
+d108b8c498aa: Pull complete
+1bfe918b8aa5: Pull complete
+dafa1a7c0751: Pull complete
+87e8abcf58a3: Pull complete
+7bac295fef3b: Pull complete
+bcc7fef45979: Pull complete
+4d6fbe8189de: Pull complete
+14eac212d69a: Pull complete
+e027eb08ee87: Pull complete
+21e7819233f8: Pull complete
+067f2478ae19: Pull complete
+645433dc13ee: Pull complete
+ad276a4ccb57: Pull complete
+72d65febc26c: Pull complete
+a2125ca77846: Pull complete
+Digest: sha256:98d3953394a4b9ac65e5e4ab8bc8d8d5bc924716c62b564a113ee57d7736ca0b
+Status: Downloaded newer image for jenkins/jenkins:lts
+docker.io/jenkins/jenkins:lts
+[root@ip-172-31-35-47 ~]# client_loop: send disconnect: Connection reset by peer
+
+ashis@MSI MINGW64 /f/Ethans
+$ ssh -i RHInstance.pem ec2-user@35.154.13.47
+load pubkey "RHInstance.pem": invalid format
+This system is not registered to Red Hat Insights. See https://cloud.redhat.com/
+To register this system, run: insights-client --register
+
+Last login: Sun Aug 30 14:41:20 2020 from 106.220.73.230
+[ec2-user@ip-172-31-35-47 ~]$ sudo su -
+Last login: Sun Aug 30 14:41:27 UTC 2020 on pts/1
+[root@ip-172-31-35-47 ~]# docker run -d -v jenkins_home:/var/jenkins_home -p 8082:8080 -p 50000:50000 jenkins/jenkins:lts
+eaee6aeaf8cea3475ebf8f443de6d9ae8d5d5ca6297e28c76182075266ef4f23
+
+[root@ip-172-31-35-47 ~]#
+[root@ip-172-31-35-47 ~]# ls -lrt
+ls -la
+^C
+[root@ip-172-31-35-47 ~]# ls -la
+total 68
+dr-xr-x---.  3 root root  4096 Aug 30 05:24 .
+dr-xr-xr-x. 18 root root   236 Apr 23 05:19 ..
+-rw-------.  1 root root  6514 Apr 23 05:24 anaconda-ks.cfg
+-rw-------.  1 root root  2205 Aug 30 06:45 .bash_history
+-rw-r--r--.  1 root root    18 Aug 12  2018 .bash_logout
+-rw-r--r--.  1 root root   258 Aug 30 05:20 .bash_profile
+-rw-r--r--.  1 root root 12288 Aug 30 05:21 .bash_profile.swp
+-rw-r--r--.  1 root root   176 Aug 12  2018 .bashrc
+-rw-r--r--.  1 root root   100 Aug 12  2018 .cshrc
+-rw-r--r--.  1 root root    21 Aug 30 03:23 mynew.txt
+-rw-------.  1 root root  6300 Apr 23 05:24 original-ks.cfg
+-rw-r--r--.  1 root root  2352 Aug 30 03:50 practice.txt
+drwx------.  2 root root    29 Aug 30 02:41 .ssh
+-rw-r--r--.  1 root root   129 Aug 12  2018 .tcshrc
+ashis@MSI MINGW64 /f/Ethans164 Aug 30 05:24 .wget-hsts
+$ ssh -i RHInstance.pem ec2-user@35.154.13.47
+load pubkey "RHInstance.pem": invalid format
+ashis@MSI MINGW64 /f/Ethans
+$ ssh -i RHInstance.pem ec2-user@35.154.13.47
+load pubkey "RHInstance.pem": invalid format
+	

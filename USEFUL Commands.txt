@@ -1,0 +1,26 @@
+USEFUL Commands
+
+sudo yum install java-1.8.0-openjdk
+systemctl enable jenkins
+systemctl start jenkins
+systemctl status jenkins
+
+
+JAVA_HOME = /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.262.b10-0.el8_2.x86_64
+
+
+docker run -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts
+
+
+
+docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
+
+
+
+
+docker run -d -v jenkins_home:/var/jenkins_home -p 8082:8080 -p 50000:50000 jenkins/jenkins:lts
+
+
+Container Id: eaee6aeaf8cea3475ebf8f443de6d9ae8d5d5ca6297e28c76182075266ef4f23
+
+
